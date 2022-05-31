@@ -20,11 +20,10 @@ class Country extends StatelessWidget {
           value: 'Philippines',
           width: size.width,
           menuItems: DropDownData.locations
-              .map(
-                (locationName) => DropdownMenuItem<String>(
-                  child: Text(locationName),
-                ),
-              )
+              .map((locationName) => DropdownMenuItem<String>(
+                    value: locationName,
+                    child: Text(locationName),
+                  ))
               .toList(),
         ),
       ],

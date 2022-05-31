@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class User with ChangeNotifier {
   final String id;
@@ -26,9 +24,7 @@ class User with ChangeNotifier {
 
   List<User> get users => _users;
 
-
   void addUser(User user) {
-    const addUserUrl = '$firebaseUrl/users.json';
     _users.add(user);
     notifyListeners();
   }
