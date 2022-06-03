@@ -15,7 +15,7 @@ class JobInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List informationTitle = [
+    const List informationTitle = [
       'Description',
       'Company',
       'Reviews',

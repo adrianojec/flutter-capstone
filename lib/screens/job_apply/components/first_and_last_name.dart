@@ -1,3 +1,6 @@
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:capstone_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +10,7 @@ class FirstAndLastName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -14,10 +18,11 @@ class FirstAndLastName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'First Name',
+              firstName,
+              textScaleFactor: scale,
               style: Theme.of(context).textTheme.bodyText1,
             ),
-            const SizedBox(height: 10),
+            const VerticalHeightSpacing(height: 10),
             SizedBox(
               width: size.width * 0.4,
               child: const CustomTextField(hintText: ''),
@@ -28,10 +33,11 @@ class FirstAndLastName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Last Name',
+              lastName,
+              textScaleFactor: scale,
               style: Theme.of(context).textTheme.bodyText1,
             ),
-            const SizedBox(height: 10),
+            const VerticalHeightSpacing(height: 10),
             SizedBox(
               width: size.width * 0.4,
               child: const CustomTextField(hintText: ''),

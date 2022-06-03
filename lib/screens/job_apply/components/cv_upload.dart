@@ -1,4 +1,7 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,14 +12,17 @@ class CvUpload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'CV',
+          cv,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        const SizedBox(height: 10),
+        const VerticalHeightSpacing(height: 10),
         Container(
           height: size.height * 0.1,
           width: size.width,
@@ -32,7 +38,8 @@ class CvUpload extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Upload Here',
+                  uploadHere,
+                  textScaleFactor: scale,
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,

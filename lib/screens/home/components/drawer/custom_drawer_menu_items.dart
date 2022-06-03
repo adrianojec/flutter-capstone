@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/applications/applications.dart';
 import 'package:capstone_flutter/screens/login/login.dart';
 import 'package:capstone_flutter/screens/profile/profile.dart';
@@ -22,35 +23,35 @@ class DrawerMenuItems extends StatelessWidget {
           DrawerItem(
             color: const Color(0xFFFF5441),
             svgSource: '${AssetPath.icon}user_white.svg',
-            text: 'Edit Profile',
+            text: editProfile,
             onTap: () => Navigator.of(context).pushNamed(ProfileScreen.routeName),
           ),
           const SizedBox(height: 20),
           DrawerItem(
             color: const Color(0xFFFF9087),
             svgSource: '${AssetPath.icon}time.svg',
-            text: 'Application (8)',
+            text: '$application (8)',
             onTap: () => Navigator.of(context).pushNamed(ApplicationScreen.routeName),
           ),
           const SizedBox(height: 20),
           DrawerItem(
             color: const Color(0xFF2CB9B5),
             svgSource: '${AssetPath.icon}setting.svg',
-            text: 'Notification Settings',
+            text: notificationSettings,
             onTap: () => Navigator.of(context).pushNamed(SettingsScreen.routeName),
           ),
           const SizedBox(height: 20),
           DrawerItem(
             color: const Color(0xFFFE33BF),
             svgSource: '${AssetPath.icon}heart.svg',
-            text: 'Share App',
+            text: shareApp,
             onTap: () {},
           ),
           const Spacer(),
           DrawerItem(
             color: const Color(0xFFFF454C),
             svgSource: '${AssetPath.icon}logout.svg',
-            text: 'Logout',
+            text: logout,
             onTap: () => Navigator.of(context).pushNamed(LoginScreen.routeName),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/screens/home/components/drawer/custom_drawer_menu_items.dart';
 import 'package:capstone_flutter/widgets/custom_circle_avatar.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Container(
       width: size.width,
       color: Colors.white,
@@ -29,10 +32,12 @@ class CustomDrawer extends StatelessWidget {
             ),
             Text(
               'Tony Stark',
+              textScaleFactor: scale,
               style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight: FontWeight.w500),
             ),
             Text(
-              'tony_stark@gmail.com',
+              'tonystark@gmail.com',
+              textScaleFactor: scale,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
             ),
             const DrawerMenuItems(),

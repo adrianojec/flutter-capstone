@@ -20,6 +20,8 @@ class _NavBarItemState extends State<NavBarItem> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Padding(
       padding: EdgeInsets.only(
         left: widget.index == 0 ? 0 : 13,
@@ -40,9 +42,13 @@ class _NavBarItemState extends State<NavBarItem> {
               children: [
                 Center(
                   child: widget.index == widget.tappedIndex
-                      ? SvgPicture.asset('assets/svg/icons/nav_arrow.svg')
+                      ? SvgPicture.asset(
+                          'assets/svg/icons/nav_arrow.svg',
+                          height: 10 / MockUpDevice.mockUpHeight * size.height,
+                        )
                       : Text(
                           BottomNavBarData.navLabel[widget.index],
+                          textScaleFactor: scale,
                           style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
                         ),
                 ),

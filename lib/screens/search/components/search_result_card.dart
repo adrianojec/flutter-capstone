@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/models/job.dart';
 import 'package:capstone_flutter/widgets/apply_modal/apply_modal.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
@@ -16,12 +17,13 @@ class SearchResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
     return InkWell(
       onTap: () {
         showModalBottomSheet(
           isScrollControlled: true,
           constraints: BoxConstraints(
-            maxHeight: size.height * 0.86,
+            maxHeight: size.height * 0.80 / MockUpDevice.mockUpWidth * size.width,
             minWidth: size.width,
           ),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -51,22 +53,26 @@ class SearchResultCard extends StatelessWidget {
             height: 50,
             width: 50,
             border: 20,
+            padding: 14,
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 job.company.name,
+                textScaleFactor: scale,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
               ),
               Text(
                 job.name,
+                textScaleFactor: scale,
                 style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 16),
               ),
             ],
           ),
           subtitle: Text(
             '${job.salary}/m    ${job.company.location}',
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
           ),
           trailing: Column(
@@ -75,6 +81,7 @@ class SearchResultCard extends StatelessWidget {
               SvgPicture.asset('${AssetPath.icon}fav.svg'),
               Text(
                 '${DateTime.now().difference(job.datePosted).inHours}h',
+                textScaleFactor: scale,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,

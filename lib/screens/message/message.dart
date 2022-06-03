@@ -1,4 +1,6 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/home_with_navbar.dart';
 import 'package:capstone_flutter/screens/message/components/messages_list.dart';
 import 'package:capstone_flutter/widgets/custom_appbar.dart';
@@ -10,6 +12,9 @@ class MessageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return SafeArea(
       child: Column(
         children: [
@@ -24,7 +29,8 @@ class MessageScreen extends StatelessWidget {
                 child: SvgPicture.asset('${AssetPath.icon}back.svg'),
               ),
               titleWidget: Text(
-                'Message',
+                message,
+                textScaleFactor: scale,
                 style: Theme.of(context).textTheme.headline1!.copyWith(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,

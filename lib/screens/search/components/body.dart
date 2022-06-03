@@ -1,8 +1,10 @@
 import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/home/components/search_and_filter.dart';
 import 'package:capstone_flutter/screens/search/components/modal_filter/modal_filter.dart';
 import 'package:capstone_flutter/screens/search/components/search_result_list.dart';
 import 'package:capstone_flutter/widgets/custom_button.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -16,19 +18,20 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 24),
+          const VerticalHeightSpacing(height: 24),
           SearchAndFilter(
             onPressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,
                 constraints: BoxConstraints(
-                  maxHeight: size.height * 0.86,
+                  maxHeight: size.height * 0.79 / MockUpDevice.mockUpWidth * size.width,
                 ),
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 shape: const RoundedRectangleBorder(
@@ -42,31 +45,31 @@ class _BodyState extends State<Body> {
               );
             },
           ),
-          const SizedBox(height: 25),
+          const VerticalHeightSpacing(height: 25),
           Text(
-            '35 Job Opportunity',
+            '35 $jobOpportunity',
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Palette.kTitleColor),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 14),
-            child: Row(
-              children: [
-                CustomButton(
-                  verticalPadding: 10,
-                  buttonWidth: size.width / 2.5,
-                  text: 'Most Relevant',
-                  press: () {},
-                ),
-                const SizedBox(width: 10),
-                CustomButton(
-                  verticalPadding: 10,
-                  buttonWidth: size.width / 2.5,
-                  text: 'Most Recent',
-                  press: () {},
-                ),
-              ],
-            ),
+          const VerticalHeightSpacing(height: 14),
+          Row(
+            children: [
+              CustomButton(
+                verticalPadding: 10,
+                buttonWidth: size.width / 2.5,
+                text: mostRelevant,
+                press: () {},
+              ),
+              const SizedBox(width: 10),
+              CustomButton(
+                verticalPadding: 10,
+                buttonWidth: size.width / 2.5,
+                text: mostRecent,
+                press: () {},
+              ),
+            ],
           ),
+          const VerticalHeightSpacing(height: 15),
           const SearchResultList(),
         ],
       ),

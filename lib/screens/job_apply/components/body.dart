@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/applications/applications.dart';
 import 'package:capstone_flutter/screens/job_apply/components/country.dart';
 import 'package:capstone_flutter/screens/job_apply/components/cv_upload.dart';
@@ -5,6 +6,7 @@ import 'package:capstone_flutter/screens/job_apply/components/first_and_last_nam
 import 'package:capstone_flutter/screens/job_apply/components/message.dart';
 import 'package:capstone_flutter/screens/job_apply/components/your_email.dart';
 import 'package:capstone_flutter/widgets/custom_button.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -20,21 +22,21 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 25),
+            const VerticalHeightSpacing(height: 20),
             const FirstAndLastName(),
-            const SizedBox(height: 15),
+            const VerticalHeightSpacing(height: 15),
             const YourEmail(),
-            const SizedBox(height: 15),
+            const VerticalHeightSpacing(height: 15),
             const Country(),
-            const SizedBox(height: 15),
+            const VerticalHeightSpacing(height: 15),
             const Message(),
-            const SizedBox(height: 15),
+            const VerticalHeightSpacing(height: 15),
             const CvUpload(),
-            const SizedBox(height: 15),
+            const VerticalHeightSpacing(height: 15),
             CustomButton(
               verticalPadding: 10,
               buttonWidth: size.width,
-              text: 'Apply Now',
+              text: applyNow,
               fontWeight: FontWeight.w600,
               fontSize: 16,
               press: () => Navigator.of(context).pushNamed(ApplicationScreen.routeName),

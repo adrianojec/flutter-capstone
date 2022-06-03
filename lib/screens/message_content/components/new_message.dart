@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
 import 'package:capstone_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,13 @@ class NewMessage extends StatelessWidget {
             height: 46,
             width: 46,
             border: 30,
+            padding: 14,
           ),
         ),
         const SizedBox(width: 11),
         Expanded(
           child: CustomTextField(
-            hintText: 'Type a message',
+            hintText: typeAMessage,
             suffixIcon: IconButton(
               splashRadius: 10,
               onPressed: () {},

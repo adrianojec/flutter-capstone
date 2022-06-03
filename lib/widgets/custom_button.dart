@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -24,6 +25,9 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Container(
       width: buttonWidth,
       decoration: BoxDecoration(
@@ -33,12 +37,13 @@ class CustomButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: () => press(),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: verticalPadding),
+          padding: EdgeInsets.symmetric(vertical: verticalPadding / MockUpDevice.mockUpHeight * size.height),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 text,
+                textScaleFactor: scale,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       fontSize: fontSize,

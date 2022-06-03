@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,6 +19,11 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = MockUpDevice.mockUpWidth / MediaQuery
+        .of(context)
+        .size
+        .width;
+
     return InkWell(
       onTap: () => onTap(),
       child: Row(
@@ -33,10 +39,15 @@ class DrawerItem extends StatelessWidget {
           const SizedBox(width: 15),
           Text(
             text,
-            style: Theme.of(context).textTheme.headline1!.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
+            textScaleFactor: scale,
+            style: Theme
+                .of(context)
+                .textTheme
+                .headline1!
+                .copyWith(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ],
       ),

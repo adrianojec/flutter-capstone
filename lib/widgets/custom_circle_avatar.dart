@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
@@ -14,9 +15,10 @@ class CustomCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: height,
-      width: width,
+      height: height / MockUpDevice.mockUpHeight * size.height,
+      width: width / MockUpDevice.mockUpHeight * size.height,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(

@@ -10,12 +10,9 @@ class SearchResultList extends StatelessWidget {
   Widget build(BuildContext context) {
     final jobs = Provider.of<Jobs>(context).jobs;
     return Expanded(
-      child: Container(
-        margin: const EdgeInsets.only(top: 15),
-        child: ListView.builder(
-          itemCount: jobs.length,
-          itemBuilder: (context, index) => SearchResultCard(job: jobs[index]),
-        ),
+      child: ListView.builder(
+        itemCount: jobs.length,
+        itemBuilder: (context, index) => SearchResultCard(job: jobs[index]),
       ),
     );
   }

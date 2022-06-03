@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/screens/call/call.dart';
 import 'package:capstone_flutter/screens/message_content/components/new_message.dart';
 import 'package:capstone_flutter/widgets/custom_appbar.dart';
@@ -13,6 +14,8 @@ class MessageContentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = MockUpDevice.mockUpWidth / MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -34,6 +37,7 @@ class MessageContentScreen extends StatelessWidget {
                     const SizedBox(width: 13),
                     Text(
                       'Tony Stark',
+                      textScaleFactor: scale,
                       style: Theme.of(context).textTheme.headline1!.copyWith(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

@@ -18,7 +18,6 @@ class CustomDropDownForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       width: width,
       margin: const EdgeInsets.only(top: 13),

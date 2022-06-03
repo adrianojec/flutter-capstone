@@ -1,3 +1,6 @@
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:capstone_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -8,34 +11,39 @@ class FieldsToEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = MockUpDevice.mockUpWidth / MediaQuery.of(context).size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Name',
+          name,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontFamily: 'Sofia',
               ),
         ),
-        const SizedBox(height: 10),
+        const VerticalHeightSpacing(height: 10),
         const CustomTextField(hintText: 'Tony Stark'),
-        const SizedBox(height: 30),
+        const VerticalHeightSpacing(height: 30),
         Text(
-          'Your Email',
+          yourEmail,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontFamily: 'Sofia',
               ),
         ),
-        const SizedBox(height: 10),
+        const VerticalHeightSpacing(height: 10),
         const CustomTextField(hintText: 'tonystark@gmail.com'),
-        const SizedBox(height: 30),
+        const VerticalHeightSpacing(height: 10),
         Text(
-          'Password',
+          password,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontFamily: 'Sofia',
               ),
         ),
-        const SizedBox(height: 10),
+        const VerticalHeightSpacing(height: 10),
         const CustomTextField(hintText: '**************'),
       ],
     );

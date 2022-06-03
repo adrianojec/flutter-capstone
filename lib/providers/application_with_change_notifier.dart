@@ -1,5 +1,5 @@
 import 'package:capstone_flutter/models/job.dart';
-import 'package:capstone_flutter/providers/user_with_change_notifier.dart';
+import 'package:capstone_flutter/models/user.dart';
 import 'package:flutter/material.dart';
 
 class Application with ChangeNotifier {

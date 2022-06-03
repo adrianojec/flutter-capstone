@@ -1,4 +1,6 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/mock_data/job_data.dart';
 import 'package:capstone_flutter/screens/home/components/popular_job_list.dart';
 import 'package:capstone_flutter/screens/home/components/recent_post_list.dart';
@@ -9,6 +11,7 @@ import 'package:capstone_flutter/widgets/bottom_nav_bar.dart';
 import 'package:capstone_flutter/widgets/custom_appbar.dart';
 import 'package:capstone_flutter/widgets/custom_circle_avatar.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +27,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int bodyIndex = 0;
+
   double xOffset = 0;
   double yOffset = 0;
   double scaleFactor = 1;
@@ -38,6 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final jobs = Provider.of<Jobs>(context, listen: false).jobs;
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)..scale(scaleFactor),
       duration: const Duration(milliseconds: 300),
@@ -54,19 +61,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       child: ClipRRect(
-        borderRadius: isOpen ? BorderRadius.circular(40) : BorderRadius.circular(0),
+        borderRadius: BorderRadius.circular(isOpen ? 40 : 0),
         child: Scaffold(
           body: bodyIndex == 1
               ? pages[1]
               : SafeArea(
                   child: SingleChildScrollView(
                     child: Container(
-                      margin: const EdgeInsets.only(top: 20),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20.0,
                       ),
                       child: Column(
                         children: [
+                          const VerticalHeightSpacing(height: 20),
                           CustomAppBar(
                             leadingWidget: InkWell(
                               onTap: () => setState(() {
@@ -88,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 height: 44,
                                 width: 44,
                                 border: 12,
+                                padding: 14,
                               ),
                             ),
                             trailingWidget: const CustomCircleAvatar(
@@ -96,24 +104,26 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 44,
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          const VerticalHeightSpacing(height: 30),
                           //Search and filter
                           SearchAndFilter(
                             onPressed: () => Navigator.of(context).pushNamed(SearchScreen.routeName),
                           ),
-                          const SizedBox(height: 30),
+                          const VerticalHeightSpacing(height: 30),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Popular Job',
+                                popularJobs,
+                                textScaleFactor: scale,
                                 style: Theme.of(context).textTheme.headline1!.copyWith(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
                               Text(
-                                'Show All',
+                                showAll,
+                                textScaleFactor: scale,
                                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                                       fontSize: 12,
                                     ),
@@ -121,19 +131,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           PopularJobList(popularJobs: jobs),
-                          const SizedBox(height: 30),
+                          const VerticalHeightSpacing(height: 30),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Recent Post',
+                                recentPost,
+                                textScaleFactor: scale,
                                 style: Theme.of(context).textTheme.headline1!.copyWith(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
                               Text(
-                                'Show All',
+                                showAll,
+                                textScaleFactor: scale,
                                 style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
                               )
                             ],

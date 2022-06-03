@@ -1,4 +1,6 @@
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/widgets/custom_list_tile.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -9,36 +11,36 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        SizedBox(height: 20),
+      children: [
+        const VerticalHeightSpacing(height: 20),
         CustomListTile(
-          titleText: 'New Post',
-          subtitleText: 'if any new post update',
+          titleText: newPost,
+          subtitleText: ifAnyNewPostUpdate,
           isOn: true,
         ),
         CustomListTile(
-          titleText: 'Got Hired',
-          subtitleText: 'if you get hired by any company',
+          titleText: gotHired,
+          subtitleText: ifYouGetHiredByAnyCompany,
           isOn: true,
         ),
         CustomListTile(
-          titleText: 'Got Rejected',
-          subtitleText: 'if you are rejected by any company',
+          titleText: gotRejected,
+          subtitleText: ifYouAreRejectedByAnyCompany,
           isOn: false,
         ),
         CustomListTile(
-          titleText: 'Message',
-          subtitleText: 'Got any new message',
+          titleText: message,
+          subtitleText: gotAnyNewMessage,
           isOn: false,
         ),
         CustomListTile(
-          titleText: 'Call',
-          subtitleText: 'Have a call',
+          titleText: call,
+          subtitleText: haveACall,
           isOn: false,
         ),
         CustomListTile(
-          titleText: 'Dark Mode',
-          subtitleText: 'Enable dark theme',
+          titleText: darkMode,
+          subtitleText: enableDarkTheme,
           isOn: false,
         ),
       ],

@@ -10,35 +10,34 @@ class MuteEndVideoButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 40),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconContainer(
-            color: Colors.white.withOpacity(0.1),
-            imageSource: SvgPicture.asset('${AssetPath.icon}mic.svg'),
-            height: 46,
-            width: 46,
-            border: 30,
-          ),
-          IconContainer(
-            color: Theme.of(context).errorColor,
-            imageSource: SvgPicture.asset('${AssetPath.icon}phone.svg'),
-            padding: 10,
-            height: 46,
-            width: 46,
-            border: 30,
-          ),
-          IconContainer(
-            color: Colors.white,
-            imageSource: SvgPicture.asset('${AssetPath.icon}camera.svg'),
-            height: 46,
-            width: 46,
-            border: 30,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconContainer(
+          color: Colors.white.withOpacity(0.1),
+          imageSource: SvgPicture.asset('${AssetPath.icon}mic.svg'),
+          height: 46,
+          width: 46,
+          border: 30,
+          padding: 14,
+        ),
+        IconContainer(
+          color: Theme.of(context).errorColor,
+          imageSource: SvgPicture.asset('${AssetPath.icon}phone.svg'),
+          padding: 10,
+          height: 46,
+          width: 46,
+          border: 30,
+        ),
+        IconContainer(
+          color: Colors.white,
+          imageSource: SvgPicture.asset('${AssetPath.icon}camera.svg'),
+          height: 46,
+          width: 46,
+          border: 30,
+          padding: 14,
+        ),
+      ],
     );
   }
 }

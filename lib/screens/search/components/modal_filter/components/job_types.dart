@@ -1,5 +1,8 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/widgets/custom_job_type_button.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -10,64 +13,66 @@ class JobTypes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 30),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Job Type',
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Sofia',
-                    ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: SvgPicture.asset('${AssetPath.icon}ellipsis.svg'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              JobTypeButton(
-                text: 'Full Time',
-              ),
-              JobTypeButton(
-                text: 'Part Time',
-              ),
-              JobTypeButton(
-                text: 'Contract',
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const JobTypeButton(
-                text: 'Freelance',
-              ),
-              const JobTypeButton(
-                text: 'Remote',
-              ),
-              Text(
-                'Show All Types',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Sofia',
-                    ),
-              ),
-            ],
-          ),
-        ],
-      ),
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              jobType,
+              textScaleFactor: scale,
+              style: Theme.of(context).textTheme.headline1!.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Sofia',
+                  ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: SvgPicture.asset('${AssetPath.icon}ellipsis.svg'),
+            ),
+          ],
+        ),
+        const VerticalHeightSpacing(height: 15),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            JobTypeButton(
+              text: fullTime,
+            ),
+            JobTypeButton(
+              text: partTime,
+            ),
+            JobTypeButton(
+              text: contract,
+            ),
+          ],
+        ),
+        const VerticalHeightSpacing(height: 15),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const JobTypeButton(
+              text: freelance,
+            ),
+            const JobTypeButton(
+              text: remote,
+            ),
+            Text(
+              showAllTypes,
+              textScaleFactor: scale,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Sofia',
+                  ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

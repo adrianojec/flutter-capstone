@@ -12,6 +12,8 @@ class JobTypeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -25,6 +27,7 @@ class JobTypeButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Text(
             text,
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

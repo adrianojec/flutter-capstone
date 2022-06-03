@@ -1,7 +1,9 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/mock_data/job_data.dart';
 import 'package:capstone_flutter/widgets/apply_modal/apply_modal.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +20,7 @@ class JobItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final job = Provider.of<Jobs>(context).jobs[index];
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -42,7 +45,7 @@ class JobItemCard extends StatelessWidget {
           horizontal: 10,
           vertical: 10,
         ),
-        width: 260,
+        width: size.height * 0.38,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
@@ -76,6 +79,7 @@ class JobItemCard extends StatelessWidget {
                       ),
                       Text(
                         job.company.name,
+                        textScaleFactor: scale,
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
                       ),
                     ],
@@ -83,19 +87,21 @@ class JobItemCard extends StatelessWidget {
                   SvgPicture.asset('${AssetPath.icon}fav.svg'),
                 ],
               ),
-              const SizedBox(height: 20),
+              const VerticalHeightSpacing(height: 20),
               Text(
                 job.name,
+                textScaleFactor: scale,
                 style: Theme.of(context).textTheme.headline1!.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
               ),
-              const SizedBox(height: 16),
+              const VerticalHeightSpacing(height: 16),
               Row(
                 children: [
                   Text(
                     '${job.salary}/m ',
+                    textScaleFactor: scale,
                     style: Theme.of(context).textTheme.headline1!.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -103,6 +109,7 @@ class JobItemCard extends StatelessWidget {
                   ),
                   Text(
                     ' ${job.company.location}',
+                    textScaleFactor: scale,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(

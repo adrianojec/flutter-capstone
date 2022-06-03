@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/job_apply/job_apply.dart';
 import 'package:capstone_flutter/widgets/custom_button.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
@@ -18,7 +19,7 @@ class ApplyButton extends StatelessWidget {
             verticalPadding: 10,
             fontWeight: FontWeight.w600,
             buttonWidth: size.width * 1,
-            text: 'Apply Now',
+            text: applyNow,
             press: () => Navigator.of(context).pushNamed(JobApplyScreen.routeName),
           ),
         ),

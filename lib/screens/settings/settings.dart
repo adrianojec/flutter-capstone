@@ -1,4 +1,6 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/settings/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +12,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = MockUpDevice.mockUpWidth / MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -19,7 +23,8 @@ class SettingsScreen extends StatelessWidget {
           icon: SvgPicture.asset('${AssetPath.icon}back.svg'),
         ),
         title: Text(
-          'Notification',
+          notification,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,

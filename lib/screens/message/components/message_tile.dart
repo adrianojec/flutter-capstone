@@ -1,4 +1,5 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/widgets/custom_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,9 @@ class MessageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Dismissible(
@@ -37,6 +41,7 @@ class MessageTile extends StatelessWidget {
           ),
           title: Text(
             'Tony Stark',
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.headline1!.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -44,6 +49,7 @@ class MessageTile extends StatelessWidget {
           ),
           subtitle: Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

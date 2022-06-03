@@ -31,6 +31,7 @@ class SearchAndFilter extends StatelessWidget {
             height: 54,
             width: 54,
             border: 15,
+            padding: 14,
           ),
         ),
       ],

@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/models/job.dart';
 import 'package:capstone_flutter/widgets/apply_modal/apply_modal.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
@@ -14,6 +15,7 @@ class RecentPostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -45,9 +47,11 @@ class RecentPostCard extends StatelessWidget {
             height: 50,
             width: 50,
             border: 15,
+            padding: 14,
           ),
           title: Text(
             job.name,
+            textScaleFactor: scale,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.headline1!.copyWith(
                   fontSize: 16,
@@ -56,10 +60,12 @@ class RecentPostCard extends StatelessWidget {
           ),
           subtitle: Text(
             job.type,
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 12),
           ),
           trailing: Text(
             '${job.salary}/m',
+            textScaleFactor: scale,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,

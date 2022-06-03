@@ -1,6 +1,9 @@
 import 'package:capstone_flutter/constants/asset_path.dart';
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/widgets/custom_circle_avatar.dart';
 import 'package:capstone_flutter/widgets/custom_icon_container.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -10,11 +13,13 @@ class ImageAndName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Column(
       children: [
         SizedBox(
-          height: size.height * 0.1,
-          width: size.width * 0.2,
+          height: size.height * 0.1 / MockUpDevice.mockUpHeight * size.height,
+          width: size.width * 0.2 / MockUpDevice.mockUpHeight * size.height,
           child: Stack(
             children: [
               CustomCircleAvatar(
@@ -24,7 +29,7 @@ class ImageAndName extends StatelessWidget {
               ),
               Positioned(
                 bottom: 0,
-                right: 5,
+                right: 5 / MockUpDevice.mockUpWidth * size.width,
                 child: IconContainer(
                   color: Theme.of(context).primaryColor,
                   imageSource: SvgPicture.asset('${AssetPath.icon}edit.svg'),
@@ -37,16 +42,18 @@ class ImageAndName extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        const VerticalHeightSpacing(height: 20),
         Text(
           'Tony Stark',
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
               ),
         ),
         Text(
-          'Edit Profile',
+          editProfile,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
         ),
       ],

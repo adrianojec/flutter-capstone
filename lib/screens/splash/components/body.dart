@@ -1,5 +1,8 @@
+import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
 import 'package:capstone_flutter/screens/login/login.dart';
 import 'package:capstone_flutter/widgets/custom_button.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,33 +14,33 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
     return Column(
       children: [
         Image.asset(
           'assets/svg/splash_png.png',
           height: size.height * 0.4,
         ),
-        const SizedBox(height: 62),
+        const VerticalHeightSpacing(height: 62),
         Text(
-          'Find a Perfect\nJob Match',
+          findAPerfectJobMatch,
+          textScaleFactor: scale,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 34),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0),
-          child: Text(
-            'Finding your dream job is more easier and faster with JobHub',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
+        Text(
+          findingYourDreamJob,
+          textScaleFactor: scale,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
-        const SizedBox(height: 40),
+        const VerticalHeightSpacing(height: 40),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 57),
           child: CustomButton(
             verticalPadding: 17,
             buttonWidth: size.width,
-            text: 'Let\'s Get Started',
+            text: letsGetStarted,
             press: () => Navigator.of(context).pushNamed(LoginScreen.routeName),
             icon: const Icon(
               CupertinoIcons.arrow_right,

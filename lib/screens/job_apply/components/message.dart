@@ -1,4 +1,6 @@
 import 'package:capstone_flutter/constants/constants.dart';
+import 'package:capstone_flutter/constants/strings.dart';
+import 'package:capstone_flutter/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 class Message extends StatelessWidget {
@@ -8,14 +10,18 @@ class Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    final scale = MockUpDevice.mockUpWidth / size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Message',
+          message,
+          textScaleFactor: scale,
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        const SizedBox(height: 10),
+        const VerticalHeightSpacing(height: 10),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),

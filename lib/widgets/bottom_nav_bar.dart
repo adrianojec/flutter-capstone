@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/constants.dart';
 import 'package:capstone_flutter/screens/profile/profile.dart';
 import 'package:capstone_flutter/screens/settings/settings.dart';
 import 'package:capstone_flutter/widgets/nav_bar_item.dart';

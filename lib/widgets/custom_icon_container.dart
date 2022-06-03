@@ -1,3 +1,4 @@
+import 'package:capstone_flutter/constants/device_size.dart';
 import 'package:flutter/material.dart';
 
 class IconContainer extends StatelessWidget {
@@ -6,7 +7,7 @@ class IconContainer extends StatelessWidget {
   final double height;
   final double width;
   final double border;
-  final double? padding;
+  final double padding;
 
   const IconContainer({
     Key? key,
@@ -15,20 +16,21 @@ class IconContainer extends StatelessWidget {
     required this.height,
     required this.width,
     required this.border,
-    this.padding,
+    required this.padding,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: height,
-      width: width,
+      height: height / MockUpDevice.mockUpHeight * size.height,
+      width: width / MockUpDevice.mockUpHeight * size.height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(border),
         color: color,
       ),
       child: Padding(
-        padding: EdgeInsets.all(padding ?? 14.0),
+        padding: EdgeInsets.all(padding / MockUpDevice.mockUpHeight * size.height),
         child: imageSource,
       ),
     );
